@@ -11,6 +11,6 @@
 #SBATCH --output output.txt
 
 echo "Hello from $(hostname) at $(date)"
-# conda activate biomechpose  # if needed
+# conda activate myvenv  # if needed
 python -u -c "print('Hello world from Python')"
 echo "Goodbye at $(date)"
