@@ -1,9 +1,10 @@
 import os
 
+
 def print_hardware_availability(check_gpu: bool = True, check_slurm: bool = True):
     """Print available CPU and GPU cores, memory, and other Slurm-related info"""
     res = {}
-    
+
     # Check total number of CPU cores on the node
     num_cpu_cores_total = os.cpu_count()
     res["num_cpu_cores_total"] = num_cpu_cores_total
@@ -28,6 +29,7 @@ def print_hardware_availability(check_gpu: bool = True, check_slurm: bool = True
         # Check accessibility of GPUs by torch
         try:
             import torch
+
             res["is_torch_available"] = True
 
             is_cuda_available = torch.cuda.is_available()
@@ -54,7 +56,7 @@ def print_hardware_availability(check_gpu: bool = True, check_slurm: bool = True
             "SLURM_NTASKS",
             "SLURM_TASKS_PER_NODE",
             "SLURM_TRES_PER_TASK",
-            "SLURM_MEM_PER_NODE"
+            "SLURM_MEM_PER_NODE",
         ]
         res["slurm_env_vars"] = {}
         for env_var in env_vars_to_check:
@@ -68,5 +70,6 @@ def print_hardware_availability(check_gpu: bool = True, check_slurm: bool = True
 
     return res
 
+
 if __name__ == "__main__":
-    print_hardware_availability(check_gpu=True)
+    print_hardware_availability(check_gpu=True, check_slurm=True)
