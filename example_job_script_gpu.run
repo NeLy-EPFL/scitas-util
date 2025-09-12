@@ -1,15 +1,23 @@
 #!/bin/bash -l
 
+#SBATCH --job-name demo_job_gpu
 #SBATCH --nodes 1
 #SBATCH --ntasks 1
-#SBATCH --cpus-per-task 1
-#SBATCH --mem 300GB
-#SBATCH --time 02:00:00
-#SBATCH --partition=h100  # or l40s
-#SBATCH --qos=normal  # or debug, long
+#SBATCH --cpus-per-task 8
+#SBATCH --mem 32GB
+#SBATCH --time 1:00:00
+#SBATCH --partition=l40s  # or h100
+#SBATCH --qos=normal
 #SBATCH --gres=gpu:1
+#SBATCH --output output.txt
 
-sleep 10
-
-conda activate flygym
-echo "hello from `hostname`"
+echo "Hello from $(hostname) at $(date)"
+# conda activate biomechpose  # if needed
+nvidia-smi
+python -u -c "print('Hello world from Python')
+try:
+    import torch
+    print(f'CUDA available through PyTorch: {torch.cuda.is_available()}')
+except ImportError:
+    print('PyTorch not available')"
+echo "Goodbye at $(date)"
