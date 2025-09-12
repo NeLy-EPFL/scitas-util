@@ -1,0 +1,15 @@
+#!/bin/bash -l
+
+#SBATCH --nodes 1
+#SBATCH --ntasks 1
+#SBATCH --cpus-per-task 1
+#SBATCH --mem 300GB
+#SBATCH --time 02:00:00
+#SBATCH --partition=h100  # or l40s
+#SBATCH --qos=normal  # or debug, long
+#SBATCH --gres=gpu:1
+
+sleep 10
+
+conda activate flygym
+echo "hello from `hostname`"

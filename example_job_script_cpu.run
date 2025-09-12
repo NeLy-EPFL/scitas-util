@@ -1,0 +1,14 @@
+#!/bin/bash -l
+
+#SBATCH --nodes 1
+#SBATCH --ntasks 1
+#SBATCH --cpus-per-task 1
+#SBATCH --mem 1024
+#SBATCH --time 00:10:00
+
+
+sleep 10
+
+echo "hello from `hostname`"
+
+sleep 100
