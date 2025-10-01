@@ -4,8 +4,8 @@
 
 set -euo pipefail
 
-# Run `squeue | grep sibwang` and capture output
-output="$(squeue | grep sibwang || true)"
+# Run `squeue | grep $(whoami)` and capture output
+output="$(squeue | grep $(whoami) || true)"
 
 # Capture all regex matches of (\d{8}) (unique) - these are job IDs
 # This can be improved upon as squeue supports generating outputs in user-specified
