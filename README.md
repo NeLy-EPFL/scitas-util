@@ -26,7 +26,7 @@ scontrol show job $jobid
 
 # Check usage
 sausage
-sausage --account upramdya  # check usage of the whole account
+sausage --account $SQUEUE_ACCOUNT  # check usage of the whole account
 
 # Attach shell to existing job
 # (when you're done, you can safely close the shell with ctrl+d without
