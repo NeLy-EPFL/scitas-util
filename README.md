@@ -15,7 +15,7 @@ Sinteract -p l40s -q debug -t 1:00:00 -m 32G -c 8 -g gpu:1
 Sinteract -p h100 -q debug -t 1:00:00 -m 64G -c 16 -g gpu:1
 
 # Interactive job on Jed (CPU)
-Sinteract -p standard -q serial -t 1:00:00 -m 64G -c 32
+Sinteract -p standard -q serial -t 1:00:00 -m 64G -c 36
 
 # Check priorities of queued jobs
 sprio -S '-Y'
